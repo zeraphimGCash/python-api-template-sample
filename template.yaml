@@ -40,7 +40,7 @@ spec:
       input:
         allowedHosts: ['github.com']
         description: 'Initial commit for ${{ parameters.name }}'
-        repoUrl: 'github.com?repo=${{ parameters.name }}&owner=your-org&private=true'
+        repoUrl: 'github.com/${{ parameters.owner }}/${{ parameters.name }}' # Use the owner and repo name from the parameters
 
     - id: register
       name: Register Component
