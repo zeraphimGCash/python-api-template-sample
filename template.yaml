@@ -1,0 +1,50 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: python-api-template
+  title: Python API Template
+  description: Scaffold a Flask-based Python API service with health and details endpoints
+spec:
+  owner: your-team-name
+  type: service
+  parameters:
+    - title: Provide some basic information
+      required:
+        - name
+        - owner
+        - description
+      properties:
+        name:
+          type: string
+          title: Service Name
+        owner:
+          type: string
+          title: Owner
+        description:
+          type: string
+          title: Description
+  steps:
+    - id: fetch-base
+      name: Fetch Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          name: ${{ parameters.name }}
+          owner: ${{ parameters.owner }}
+          description: ${{ parameters.description }}
+
+    - id: publish
+      name: Publish to GitHub
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        description: 'Initial commit for ${{ parameters.name }}'
+        repoUrl: 'github.com?repo=${{ parameters.name }}&owner=your-org&private=true'
+
+    - id: register
+      name: Register Component
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
