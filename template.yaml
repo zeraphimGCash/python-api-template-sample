@@ -40,9 +40,10 @@ spec:
       input:
         allowedHosts: ['github.com']
         description: 'Initial commit for ${{ parameters.name }}'
-        repoUrl: '${{ parameters.owner }}/${{ parameters.name }}'  # Update this line
+        repoUrl: 'github.com/zeraphimGCash/${{ parameters.name }}'
         private: false  # Set this to true if you want the repo to be private
         visibility: public  # Set visibility to 'private' or 'public' as needed
+
 
     - id: register
       name: Register Component
