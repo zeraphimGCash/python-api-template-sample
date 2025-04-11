@@ -38,12 +38,9 @@ spec:
       name: Publish to GitHub
       action: publish:github
       input:
-        allowedHosts: ['github.com']
-        description: 'Initial commit for ${{ parameters.name }}'
-        repoUrl: 'github.com/zeraphimGCash/${{ parameters.name }}'
-        private: false  # Set this to true if you want the repo to be private
-        visibility: public  # Set visibility to 'private' or 'public' as needed
-
+        repoUrl: github.com/${{ parameters.owner }}/${{ parameters.name }}
+        description: ${{ parameters.description }}
+        private: false
 
     - id: register
       name: Register Component

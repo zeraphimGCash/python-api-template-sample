@@ -1,12 +1,11 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{ values.name }}
-  description: ${{ values.description }}
-  tags:
-    - python
-    - flask
+  name: ${{ parameters.name }}
+  description: ${{ parameters.description }}
+  annotations:
+    github.com/project-slug: ${{ parameters.owner }}/${{ parameters.name }}
 spec:
   type: service
-  owner: ${{ values.owner }}
+  owner: ${{ parameters.owner }}
   lifecycle: experimental
