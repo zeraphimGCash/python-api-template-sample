@@ -38,7 +38,7 @@ spec:
       name: Publish to GitHub
       action: publish:github
       input:
-        repoUrl: https://github.com/${{ parameters.owner }}/${{ parameters.name }}
+        repoUrl: github.com/${{ parameters.owner }}/${{ parameters.name }}
         description: ${{ parameters.description }}
         private: false
 
